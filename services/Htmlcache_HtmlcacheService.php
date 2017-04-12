@@ -48,7 +48,10 @@ class Htmlcache_HtmlcacheService extends BaseApplicationComponent
         if (craft()->request->isCpRequest()) {
             return false;
         }
-
+        // Skip if it's a webhook to clear cache
+        if (craft()->request->path == 'htmlcache/clearCache') {
+            return false;
+        }
         // Skip if it's an action Request
         if (craft()->request->isActionRequest()) {
             return false;

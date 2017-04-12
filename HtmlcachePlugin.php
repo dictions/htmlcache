@@ -237,4 +237,16 @@ class HtmlcachePlugin extends BasePlugin
             craft()->htmlcache_htmlcache->clearCacheFiles() => Craft::t('Htmlcache cached pages')
         );
     }
+
+	/**
+     * Adds routes to allow external webhook to clear cache
+     *
+     * @return array
+     */
+    public function registerSiteRoutes()
+    {
+        return array(
+            'htmlcache/clearCache' => array('action' => 'htmlcache/webhook/clearCache'),
+        );
+    }
 }
